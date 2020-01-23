@@ -1,32 +1,33 @@
 from selenium import webdriver
-import time
-
+import time, optparse
+from banner import Banner
 """
-# Script para efetuar downloads da plataforma do ALURA
-E-MAIL-AQUI == seu e-mail de acesso
-senha-aqui == sua senha de acesso
+# Script to download Alura courses
 
- Enjoy =)
+Enjoy =)
 """
+Banner()
 
-url_base = input('Digite a url base: ')
-inicio = int(input('Digite o primeiro ID: '))
-fim = int(input('Digite o segundo ID: '))
+parse = optparse.OptionParser()
+parse.add_option('-u','--url', help='Comand base URL', dest='url_base', metavar='https://alura.com.br/.../')
+parse.add_option('-i','--initial', help='Number of first video', dest='ini', metavar='1337')
+parse.add_option('-f','--final', help='Number of final video', dest='final', metavar='1356')
+
+(options, args) = parse.parse_args()
 
 chrome = webdriver.Chrome(executable_path='/Users/gvb/Documents/Scrappy/chromedriver')
 chrome.get('https://cursos.alura.com.br/loginForm')
 
-
-usuario = chrome.find_element_by_name('username')
-senha = chrome.find_element_by_name('password')
-usuario.clear()
-usuario.send_keys('e-mail-aqui')
-senha.clear() 
-senha.send_keys('senha-aqui')
+user = chrome.find_element_by_name('username')
+password = chrome.find_element_by_name('password')
+user.clear()
+user.send_keys('your-email')
+password.clear() 
+password.send_keys('your-password')
 chrome.find_element_by_class_name('btn-login').click()
 
-for i in range(inicio, fim+1):
-    url_final = f'{url_base}{i}'
+for i in range(options.ini, options.final+1):
+    url_final = f'{options.url_base}{i}'
     chrome.get(url_final)
    
     video_sec = chrome.find_element_by_class_name('video-container')
