@@ -10,16 +10,16 @@ Banner()
 
 parse = optparse.OptionParser()
 parse.add_option('-u','--url', help='Comand base URL', dest='url_base', metavar='https://alura.com.br/.../')
-parse.add_option('-i','--initial', help='Number of first video', dest='ini', metavar='1337')
-parse.add_option('-f','--final', help='Number of final video', dest='final', metavar='1356')
+parse.add_option('-i','--initial', help='Number of first video', dest='ini', metavar='1337', type="int")
+parse.add_option('-f','--final', help='Number of final video', dest='final', metavar='1356', type="int")
 
 (options, args) = parse.parse_args()
 
-chrome = webdriver.Chrome(executable_path='/Users/gvb/Documents/Scrappy/chromedriver')
+chrome = webdriver.Chrome(executable_path='C:\\Users\\Gustavo\\Downloads\\PDFs Peakflow\\alura-down-master\\alura-down-master\\chromedriver.exe')
 chrome.get('https://cursos.alura.com.br/loginForm')
 
-user = chrome.find_element_by_name('username')
-password = chrome.find_element_by_name('password')
+user = chrome.find_element_by_xpath('//*[@id="login-email"]')
+password = chrome.find_element_by_xpath('//*[@id="password"]')
 user.clear()
 user.send_keys('your-email')
 password.clear() 
