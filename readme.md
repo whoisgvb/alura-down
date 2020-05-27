@@ -3,8 +3,6 @@
   <p align="center">Download Alura courses (requires account)</p>
 
   <p align="center">
-    <a href="https://twitter.com/whoisgvb">
-      <img src="https://img.shields.io/badge/twitter-@whoisgvb-red.svg">
     <a href="https://t.me/whoisgvb">
       <img src="https://img.shields.io/badge/Telegram-@whoisgvb-blue.svg">
     </a>
